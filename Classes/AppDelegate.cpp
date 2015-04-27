@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+
 
 USING_NS_CC;
 
@@ -33,12 +33,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // turn on display FPS
     director->setDisplayStats(true);
-
+    glview->setDesignResolutionSize(960, 640, ResolutionPolicy::FIXED_HEIGHT);
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = MainScene::create();
 
     // run
     director->runWithScene(scene);

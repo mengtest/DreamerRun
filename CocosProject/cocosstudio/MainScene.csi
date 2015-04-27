@@ -1,0 +1,11 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Type="Plist" Name="MainScene" ID="80ea0d6a-8654-43b3-9c0f-e0494c201008" Version="2.2.1.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="MainRes/mainsence.png" />
+      <FilePathData Path="MainRes/girl.png" />
+      <FilePathData Path="MainRes/btn.png" />
+    </ImageFiles>
+    <MaxSize Width="2048" Height="2048" />
+  </Content>
+</PlistInfoProjectFile>
