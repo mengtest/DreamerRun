@@ -14,7 +14,19 @@
 #include "extensions/cocos-ext.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
-using namespace cocostudio::timeline;
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <spine/spine.h>
+#include <spine/spine-cocos2dx.h>
+#include <vector>
+#include "Box2D/Box2D.h"
+#include "VisibleRect.h"
+#include "renderer/CCRenderer.h"
+#include "renderer/CCCustomCommand.h"
+using namespace std;
+using namespace spine;
+using namespace cocos2d::ui;
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace std;

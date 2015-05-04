@@ -12,6 +12,10 @@
         </Folder>
         <PlistInfo Name="MainScene.csi" Type="Plist" />
         <Project Name="LoadingScene.csd" Type="Scene" />
+        <Project Name="GameLayer.csd" Type="Layer" />
+        <Project Name="SkillNode.csd" Type="Layer" />
+        <Project Name="JumpNode.csd" Type="Layer" />
+        <Project Name="GameControlLayer.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

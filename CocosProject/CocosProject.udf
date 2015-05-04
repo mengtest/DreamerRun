@@ -19,5 +19,16 @@
         <KeystoreAliasPassword Value="" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="SkillNode.csd" />
+          <FilePathData Path="JumpNode.csd" />
+          <FilePathData Path="GameLayer.csd" />
+          <FilePathData Path="GameControlLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="GameControlLayer.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>
