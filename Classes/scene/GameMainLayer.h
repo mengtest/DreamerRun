@@ -11,7 +11,7 @@
 
 #include "MHeader.h"
 #include "GamePlayer.h"
-#include "TiledMapLoader.h"
+#include "TiledMap.h"
 #include "PhysicListener.h"
 
 class GameMainLayer : public Layer {

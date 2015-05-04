@@ -15,10 +15,5 @@ public:
     static PhysicListener* create();
     virtual bool init();
     bool onPhysicContactBegin(PhysicsContact& contact);
-//    auto contactListener = EventListenerPhysicsContact::create();
-//    contactListener->onContactBegin = CC_CALLBACK_1(PhysicsContactTest::onContactBegin, this);
-//    _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
-    
-    
 };
 #endif /* defined(__DreamerRun__PhysicListener__) */

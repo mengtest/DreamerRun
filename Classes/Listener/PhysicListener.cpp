@@ -17,6 +17,7 @@ bool PhysicListener::onPhysicContactBegin(PhysicsContact& contact){
     auto spriteB = (Sprite*)contact.getShapeB()->getBody()->getNode();
     log("p=============p===%d===%d===",spriteA->getTag(),spriteB->getTag());
     if ((spriteA->getTag()==2||spriteA->getTag()==10)&&(spriteB->getTag()==2||spriteB->getTag()==10)) {
+
         log("======墙壁撞到Player======");
     }
     return true;

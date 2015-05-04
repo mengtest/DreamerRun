@@ -53,9 +53,9 @@ void GameMainLayer::initPhysics() {
 
 
 void GameMainLayer::addMap() {
-    TMXTiledMap *map = TiledMapLoader::getTiledMapByLevel(1);
+    TiledMap *map = TiledMap::createMapByLevel(1);
     Size mapSize = map->getContentSize();
-    map->setPosition(mapSize.width / 2, mapSize.height / 2);
+    map->setPosition(mapSize.width / 2, 0);
     m_uiNode->addChild(map, 2);
     
     
