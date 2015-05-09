@@ -20,7 +20,9 @@ GamePlayer::GamePlayer() {
 
 
 };
-
+void GamePlayer::setMainNode(Widget * mainNode){
+    this->mainNode = mainNode;
+}
 GamePlayer::~GamePlayer() {
     m_gamePlayer->release();
     m_gamePlayer = NULL;
@@ -30,9 +32,14 @@ GamePlayer::~GamePlayer() {
 bool GamePlayer::init() {
     registerAllNotify();
     addSpineNode();
+    
     initPhysicBody();
+    spSlot * torso = skeletonNode->findSlot("torso");
+    Point pos =skeletonNode->convertToWorldSpace(ccp(torso->bone->x,torso->bone->y));
+    initPosX = pos.x;
+    initPosY = pos.y;
 //    addCamera();
-//    scheduleUpdate();
+    scheduleUpdate();
     return true;
 };
 
@@ -122,13 +129,22 @@ void  GamePlayer::runCallBack(EventCustom *event) {
 
 void GamePlayer::jumpUpCallBack(EventCustom *event) {
     log("jumpUpCallBack");
-    spTrackEntry *jumpEntry = skeletonNode->addAnimation(0, "jump", false, 3);
-    skeletonNode->addAnimation(0, "run", true);
+    //spTrackEntry *jumpEntry = skeletonNode->addAnimation(0, "jump", false, 3);
+    //skeletonNode->addAnimation(0, "run", true);
+   // this->setPositionY(this->getPositionY()+10)
+    MoveTo * moveTo = MoveTo::create(0.4,Vec2(this->getPositionX(),this->getPositionY()+170));
+    MoveTo * moveTo1 =MoveTo::create(0.6,Vec2(this->getPositionX(),this->getPositionY()));
+    Sequence * seq = Sequence::create(moveTo,moveTo1, NULL);
+    this->runAction(seq);
+    
+    
+    
 //
-    skeletonNode->setTrackStartListener(jumpEntry, [](int trackIndex) {
-        log("jumped!");
-
-    });
+//    skeletonNode->setTrackStartListener(jumpEntry, [](int trackIndex) {
+//        log("jumped!");
+//        
+//
+//    });
 //    AnimationState_isComplete();
 };
 
@@ -149,19 +165,30 @@ void GamePlayer::doubleJumpCallBack(EventCustom *event) {
 };
 
 void GamePlayer::update(float delay) {
-
-   m_camera->setPositionX(this->getPositionX());
+  spSlot*  torso =  skeletonNode->findSlot("torso");
+  CCPoint pos =skeletonNode->convertToWorldSpace(ccp(torso->bone->x,torso->bone->y));//粒子1是添加在Scene上的 所以需要坐标转换一下
+//    this->setPositionY();
+    //this->setPositionX(pos.x);
+  //  this->getPhysicsBody()->setPositionOffset(Vec2(0,pos.y-initPosY));
+    log("posx=%f====posy=%f=====realY====%f",pos.x,pos.y,(pos.y-initPosY+this->getPositionY()));
+    
+  //log("torsox=====%f",torso->worldX) ;
+  //log("torsoy=====%f",torso->worldY) ;
 };
 
 void GamePlayer::initPhysicBody() {
-    this->setContentSize(skeletonNode->getContentSize());
-    PhysicsBody *m_body = PhysicsBody::createBox(skeletonNode->getContentSize(), PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0, 0));
+    Size skeletonSize = Size(80, 180);
+    this->setContentSize(skeletonSize);
+    PhysicsBody *m_body = PhysicsBody::createBox(skeletonSize, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(-skeletonSize.width/2, 0));
     this->setPhysicsBody(m_body);
     m_body->setGravityEnable(false);
-    m_body->applyForce(Vec2(15, 0));
+    
+    //m_body->applyForce(Vec2(15, 0));
 //    m_body->setCollisionBitmask(0xFFFFFFFF);
     m_body->setCategoryBitmask(1);    // 0001
     m_body->setContactTestBitmask(-1); // 0100
     m_body->setCollisionBitmask(-1);   // 0011
+  //  m_body->setVelocity(Vec2(skeletonSize.width/2,0));
+    m_body->setLinearDamping(0);
     this->setTag(2);
 };

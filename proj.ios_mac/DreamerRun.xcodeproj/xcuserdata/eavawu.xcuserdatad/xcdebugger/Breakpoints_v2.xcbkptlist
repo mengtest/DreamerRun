@@ -9,13 +9,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Player/GamePlayer.cpp"
-            timestampString = "452017714.084242"
+            filePath = "../Classes/Map/TiledMap.cpp"
+            timestampString = "452529237.077272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "GamePlayer::init()"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "TiledMap::loadAllObj()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/Map/TiledMap.cpp"
+            timestampString = "452535789.368211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "TiledMap::addAllObj2Layer(Widget *mainLayer)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

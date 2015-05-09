@@ -15,11 +15,15 @@ bool GameMainLayer::init() {
     addMap();
     //createPhysicBorder();
     initPhysics();
-    addOrbtorCamera();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(NOTIFY_PLAYER_JUMP_UP, std::bind(&GameMainLayer::jumpUpCallBack, this, std::placeholders::_1));
     addPhysicContactListener();
     scheduleUpdate();
     return true;
 }
+void GameMainLayer::jumpUpCallBack(EventCustom *event){
+    MoveTo * moveTo1 =MoveTo::create(0.5,Vec2(m_uiNode->getPositionX()-100,m_uiNode->getPositionY()));
+    m_uiNode->runAction(moveTo1);
+};
 void GameMainLayer::addGamePlayer2Scene() {
     m_player = GamePlayer::getInstance();
     m_player->setPosition(300, 20);
@@ -57,23 +61,26 @@ void GameMainLayer::addMap() {
     Size mapSize = map->getContentSize();
     map->setPosition(mapSize.width / 2, 0);
     m_uiNode->addChild(map, 2);
+    map->addAllObj2Layer(m_uiNode);
     
     
 
 };
-void GameMainLayer::addOrbtorCamera(){
-
-        Size winSize = Director::getInstance()->getWinSize();
-        m_camera = Camera::createOrthographic(winSize.width, winSize.height, 0, 10);
-    
-        m_camera->setPositionX(GamePlayer::getInstance()->getPositionX());
-        m_camera->setCameraFlag(CameraFlag::USER1);
-        this->addChild(m_camera);
-        this->setCameraMask(2,true);
-
-};
+//void GameMainLayer::addOrbtorCamera(){
+//
+//        Size winSize = Director::getInstance()->getWinSize();
+//        m_camera = Camera::createOrthographic(winSize.width, winSize.height, 0, 10);
+//    
+//        m_camera->setPositionX(GamePlayer::getInstance()->getPositionX());
+//        m_camera->setCameraFlag(CameraFlag::USER1);
+//        this->addChild(m_camera);
+//        this->setCameraMask(2,true);
+//
+//};
 void GameMainLayer::update(float delay){
-    m_camera->setPositionX(m_player->getPositionX());
+    //this->setPositionX(this->getPositionX()-2);
+    //m_camera->setPositionX(m_player->getPositionX());
+    m_uiNode->setPositionX(m_uiNode->getPositionX()-5);
  
 };
 void GameMainLayer::addPhysicContactListener(){

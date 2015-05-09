@@ -18,6 +18,39 @@ TiledMap *TiledMap::createMapByLevel(int level) {
 };
 void TiledMap::loadAllObj(){
     
+    auto group = this->getObjectGroup("coin");
+    auto& objects = group->getObjects();
+    
+    Value objectsVal = Value(objects);
+    CCLOG("%s", objectsVal.getDescription().c_str());
+
+    for (auto& obj : objects)
+    {
+        Coin * coinTemp = Coin::create("coin.png");
+        ValueMap& dict = obj.asValueMap();
+        
+        float x = dict["x"].asFloat();
+        float y = dict["y"].asFloat();
+        coinTemp->setPosition(Vec2(x,y))
+                              ;
+        coinVector.push_back(coinTemp);
+
+    }
+    
+    
+   
+    
+};
+void TiledMap::addAllObj2Layer(Widget *mainLayer){
+    ;
+//    for(auto &obj:coinVector){
+//        //mainLayer->addChild(obj);
+//    }
+    for (int i=0 ; i<coinVector.size(); i++) {
+        mainLayer->addChild(coinVector[i]);
+    }
+    //Sprite *c = Sprite::create("coin.png");
+    //mainLayer->addChild(c);
 };
 TiledMap* TiledMap::create(string tmxFile){
 
@@ -25,6 +58,7 @@ TiledMap* TiledMap::create(string tmxFile){
     if (ret->initWithTMXFile(tmxFile))
     {
         ret->autorelease();
+        ret->loadAllObj();
         return ret;
     }
     CC_SAFE_DELETE(ret);

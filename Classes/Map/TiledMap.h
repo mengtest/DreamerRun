@@ -7,7 +7,7 @@
 #define __TiledMapLoader_H_
 
 #include "MHeader.h"
-
+#include "Coin.h"
 class TiledMap : public TMXTiledMap {
 public:
     static TiledMap * create(string tmxFile);
@@ -16,9 +16,14 @@ public:
     static TiledMap *createMapByLevel(int level);
     
     void loadAllObj();
+    
+    void addAllObj2Layer(Widget *mainLayer);
+    
+    
 
 private:
-
+    vector<Coin *> coinVector;
+    
 };
 
 

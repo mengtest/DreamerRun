@@ -46,12 +46,12 @@ class GamePlayer : public Node {
 
     void update(float delay);
 
-    void addCamera();
-
-    Camera * m_camera;
+    void setMainNode(Widget *mainNode);
+    Widget * mainNode;
+    int initPosX,initPosY;
 public:
     static GamePlayer *getInstance();
-
+    
 
     virtual bool init();
 

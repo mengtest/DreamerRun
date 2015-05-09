@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="16" tileheight="16" nextobjectid="32">
  <tileset firstgid="1" name="map01" tilewidth="16" tileheight="16">
   <image source="map01.png" width="256" height="256"/>
  </tileset>
- <layer name="coin" width="60" height="40">
-  <data encoding="base64" compression="zlib">
-   eJzt2SEOgDAQRcGeogkSyRG4/8UwCAQJbGlLITNJHWJfviQlAAC+aH37AAAAAAC6yPsrMdU8pJOcypuXyre0duzs2TsH31Nne5ZsPPq+V01/6b27XXTjEXujDZHvR+1txT8N/m4DURIFHg==
-  </data>
- </layer>
+ <objectgroup name="coin">
+  <object id="4" name="coin1" x="474" y="581"/>
+  <object id="20" name="coin2" x="800.65" y="578.235"/>
+ </objectgroup>
+ <objectgroup name="stone">
+  <object id="30" name="stone" x="765.882" y="577.059"/>
+  <object id="31" name="stone2" x="865.882" y="572.941"/>
+ </objectgroup>
 </map>

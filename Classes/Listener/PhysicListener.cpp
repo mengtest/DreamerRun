@@ -5,7 +5,7 @@
 //  Created by Eavawu on 5/4/15.
 //
 //
-
+#include "MainScene.h"
 #include "PhysicListener.h"
 bool PhysicListener::init(){
     EventListenerPhysicsContact::init();
@@ -17,7 +17,7 @@ bool PhysicListener::onPhysicContactBegin(PhysicsContact& contact){
     auto spriteB = (Sprite*)contact.getShapeB()->getBody()->getNode();
     log("p=============p===%d===%d===",spriteA->getTag(),spriteB->getTag());
     if ((spriteA->getTag()==2||spriteA->getTag()==10)&&(spriteB->getTag()==2||spriteB->getTag()==10)) {
-
+      //  Director::getInstance()->replaceScene(MainScene::create());
         log("======墙壁撞到Player======");
     }
     return true;

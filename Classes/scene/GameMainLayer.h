@@ -40,9 +40,11 @@ private:
     Camera *m_camera;
     Widget *m_uiNode;
     GamePlayer *m_player;
+    
+    void jumpUpCallBack(EventCustom *event);
     EventListenerPhysicsContact* physicContactListener ;
 
-
+    int speed = 4 ;
     Widget *jumpNode;
 //    Widget * node ;
 };
